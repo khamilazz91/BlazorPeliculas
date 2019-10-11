@@ -1,0 +1,73 @@
+﻿@page "/"
+
+
+@*<p>Hola, @UtilidadesString.Enmayuscular(nombre)</p>
+
+<p>Vamos a sumar  2 + 2 = @(2 + 2)</p>
+
+<button @onclick="@ManejarClick">
+    Presioname
+</button>*@
+
+
+@*<div>
+    <h3>Pelicula</h3>
+    @foreach (var pelicula in ObtenerPelicula()) 
+     { 
+        <div>
+            <p>Titulo: <b>@pelicula.Titulo</b></p>
+            <p>Fecha Lanzamiento: <b>@pelicula.Lanzamiento.ToString("dd MMM yyyy")</b></p>
+        </div>       
+     }
+</div>*@
+
+    <div>
+        <h3>Pelicula</h3>
+        @for (var i = 0; i < Peliculas.Count; i++) 
+         {
+            <div>
+                <p>@(i+1)) Titulo: <b>@Peliculas[i].Titulo</b></p>
+                <p>Fecha Lanzamiento: <b>@Peliculas[i].Lanzamiento.ToString("dd MMM yyyy")</b></p>
+            </div>
+         }
+    </div>
+
+
+
+@code {
+    string nombre = "Felipe";
+
+    protected override async Task OnInitializedAsync()
+    { 
+        
+    }
+
+    public Pelicula Spiderman { get { return ObtenerPelicula(); } }
+    public List<Pelicula> Peliculas { get { return ObtenerPeliculas(); } }
+
+    public Pelicula ObtenerPelicula()
+    {
+        return new Pelicula()
+        {
+            Titulo = "Spider-Man: Far From Home",
+            Lanzamiento = new DateTime(2019, 7, 2),
+        };
+    }
+
+    private List<Pelicula> ObtenerPeliculas()
+    {
+        return new List<Pelicula>()
+        {
+            new Pelicula(){Titulo = "Spider-Man: Far From Home", Lanzamiento  = new DateTime(2019, 7, 2)},
+            new Pelicula(){Titulo = "Moana", Lanzamiento  = new DateTime(2016, 11, 23)},
+            new Pelicula(){Titulo = "Inception", Lanzamiento  = new DateTime(2010, 7, 16)}
+        };
+    }
+
+    private void ManejarClick()
+    {
+        Console.WriteLine("Me han clickeado!");
+    }
+
+
+}
