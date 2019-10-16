@@ -6,11 +6,15 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    int currentCount = 0;
+<div>
+    <ListadoPeliculas  />
+</div>
 
-    void IncrementCount()
-    {
-        currentCount++;
+    @code {
+        int currentCount = 0;
+
+        void IncrementCount()
+        {
+            currentCount++;
+        }
     }
-}
