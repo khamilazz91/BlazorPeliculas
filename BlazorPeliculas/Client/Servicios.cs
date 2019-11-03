@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorPeliculas.Client
 {
+    //anda a laar
     public class ServiciosSingleton
     {
         public int Valor { get; set; }
