@@ -1,23 +1,33 @@
 ﻿@page "/"
+@inject ServiciosSingleton singleton
+
+<p>El valor del singleton es: @singleton.Valor</p>
 
 <div>
     <h3>Peliculas</h3>
-    <ListadoPeliculas Peliculas="ObtenerPeliculas()" />
-
+    <ListadoPeliculas Peliculas="Peliculas" />
 </div>
 
+<button @onclick="AgregarPelicula">Agregar Pelicula</button>
 
 @code {
     string nombre = "Felipe";
 
-    private List<Pelicula> ObtenerPeliculas()
+    private List<Pelicula> Peliculas;
+
+    protected override void OnInitialized()
     {
-        return new List<Pelicula>()
-       {
-           new Pelicula(){Titulo = "Spider-Man: Far From Home", Lanzamiento  = new DateTime(2019, 7, 2)},
-           new Pelicula(){Titulo = "Moana", Lanzamiento  = new DateTime(2016, 11, 23)},
-           new Pelicula(){Titulo = "Inception", Lanzamiento  = new DateTime(2010, 7, 16)}
-       };
+        Peliculas = new List<Pelicula>()
+    {
+            new Pelicula() { Titulo = "Spider-Man: Far From Home", Lanzamiento = new DateTime(2019, 7, 2) },
+            new Pelicula() { Titulo = "Moana", Lanzamiento = new DateTime(2016, 11, 23) },
+            new Pelicula() { Titulo = "Inception", Lanzamiento = new DateTime(2010, 7, 16) }
+        };
+    }
+
+    void AgregarPelicula()
+    {
+        Peliculas.Add(new Pelicula() { Titulo = "Nueva Pelicula", Lanzamiento = DateTime.Today });
     }
 
     public Pelicula Spiderman { get { return ObtenerPelicula(); } }

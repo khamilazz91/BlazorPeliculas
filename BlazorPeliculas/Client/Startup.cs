@@ -7,6 +7,8 @@ namespace BlazorPeliculas.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ServiciosSingleton>();
+            services.AddTransient<ServiciosTransient>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)
