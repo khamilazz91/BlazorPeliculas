@@ -1,3 +1,4 @@
+using BlazorPeliculas.Client.Repositorios;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,6 +10,7 @@ namespace BlazorPeliculas.Client
         {
             services.AddSingleton<ServiciosSingleton>();
             services.AddTransient<ServiciosTransient>();
+            services.AddScoped<IRepositorio, Repositorio>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)
